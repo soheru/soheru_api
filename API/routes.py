@@ -32,10 +32,8 @@ def index():
             original_url=url, short_id=short_id, created_at=datetime.now())
         db.session.add(new_link)
         db.session.commit()
-        short_url = request.host_url + "/short/" + short_id
-
+        short_url = request.host_url + "short/" + short_id
         return render_template('index.html', short_url=short_url)
-
     return render_template('index.html')
 
 
