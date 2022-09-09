@@ -1,3 +1,2 @@
 flask 
 requests
-bing_image_downloader
