@@ -1,5 +1,5 @@
 import requests, re
-from API import app 
+from API import app, db
 from flask import request 
 from datetime import datetime
 from bs4 import BeautifulSoup as bs
@@ -18,6 +18,8 @@ def devian(query):
         new_link = ShortUrls(
             original_url=url, short_id=short_id, created_at=datetime.now()
         )
+        db.session.add(new_link)
+        db.session.commit()
         ks.append(request.host_url + "short/" + short_id) 
     return ks  
 
