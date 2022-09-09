@@ -26,6 +26,7 @@ def get_beauitfy_details(c_id):
         'available_in':byname(x.get('networks')),
         'thumbnail':pic_url+x.get('backdrop_path'),
         'first_air_date':x.get('first_air_date'),
+        'id':x.get('id'),
         'last_air_date':x.get('last_episode_to_air').get('air_date'),
         'last_episodes':x.get('last_episode_to_air').get('episode_number'),
         'episodes':x.get('number_of_episodes'),
@@ -43,3 +44,30 @@ def get_beauitfy_details(c_id):
 def get_shows(query):
     x= r.get(f"{base_url}/search/tv?api_key={TMDBAPI}&language=en&query={query}&page=1&include_adult=true", headers=headers).json().get('results')
     return x[0].get('id'), x
+
+def get_movie(query):
+    x= r.get(f"{base_url}/search/movie?api_key={TMDBAPI}&language=en&query={query}&page=1&include_adult=true", headers=headers).json().get('results')
+    return x[0].get('id'), x
+
+def moviedata(query):
+    payload = {"api_key": TMDBAPI, "language": "en-US", "append_to_response": "videos"}
+    data = r.get(f"{base_url}/movie/{query}?", params=payload).json()
+    return {
+        'c_id' : data.get("id"),
+        'title' :data.get("title"),
+        'tagline' : data.get("tagline"),
+        'status' : data.get("status"),
+        'genres' : byname(data.get("genres")),
+        'language' : byname(data.get("spoken_languages")),
+        'runtime' : data.get("runtime"),
+        'release'  : data.get("release_date"),
+        'rating'  : data.get("vote_average"),
+        'popularity' : data.get("popularity"),
+        'overview' : data.get("overview"),
+        'posterpath' : data.get("backdrop_path"),
+        'homepage' : data.get("homepage"),
+        'imdbid' : data.get("imdb_id"),
+        'ytkey'  : data.get("videos"),
+    }, data
+    
+    
