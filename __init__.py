@@ -7,7 +7,6 @@ from .anilist import anime_info, manga_info
 app = Flask(__name__)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',}
 
-
 @app.route('/')
 def mainpage():
     return {'success':True, 'status':'working'}
@@ -22,6 +21,11 @@ def alphacoders(query):
 def tmdb_v1(query):
     x = get_shows(query)[0]
     return get_beauitfy_details(x)
+
+@app.route('/tmdb/<query>')
+def tmdb_whole_raw(query):
+    x = get_shows(query)
+    return x[1]
 
 @app.route('/tmdb/raw/<query>')
 def tmdb_raw(query):
