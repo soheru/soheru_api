@@ -67,7 +67,6 @@ def moviedata(query):
         'posterpath' : data.get("backdrop_path"),
         'homepage' : data.get("homepage"),
         'imdbid' : data.get("imdb_id"),
-        'ytkey'  : data.get("videos"),
     }, data
     
     
