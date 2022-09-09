@@ -12,7 +12,7 @@ def generate_short_id(num_of_chars: int):
 
 
 @app.route('/apishort', methods=['POST'])
-def api_short(shortlink):
+def api_short():
     if request.method == 'POST':
         print(request)
         return request
