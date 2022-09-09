@@ -1,6 +1,6 @@
 import requests, random
 from API import app, db
-from flask import redirect, jsonify
+from flask import redirect, jsonify, request
 from datetime import datetime
 from API.routes import generate_short_id
 from API.models import ShortUrls
@@ -27,4 +27,4 @@ def alphacoders(query):
     db.session.add(thumb)
     db.session.add(urlimage)
     db.session.commit()
-    return jsonify({'url_image':urlimage, 'thumb_url':thumb})
+    return jsonify({'url_image':request.host_url + "short/" + short_id, 'thumb_url':request.host_url + "short/" + short_id_two})
