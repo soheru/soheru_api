@@ -46,7 +46,7 @@ def tmdbmovie_whole_raw(query):
 @app.route('/tmdb/movie/raw/<query>')
 def tmdbmovie_raw(query):
     x = get_movie(query)
-    return jsonify(moviedata(x[0])[0])    
+    return jsonify(moviedata(x[0])[1])    
 #----------------------------------------
 @app.route('/anime/<query>')
 def anime_api(query):
