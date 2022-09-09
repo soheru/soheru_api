@@ -38,7 +38,6 @@ def get_beauitfy_details(c_id):
         'rating':x.get('rating'),
         'studios':byname(x.get('production_companies')),
         'imdbid':x.get('imdb_id'),
-        'seasons':x.get('seasons')
     }
 
 def get_shows(query):
