@@ -4,6 +4,7 @@ import requests
 from flask import Flask, render_template, jsonify, redirect
 from .tmdb import get_shows, get_beauitfy_details, get_raw_tmdb, get_movie, moviedata
 from .anilist import anime_info, manga_info
+from .scraper import devian
 
 app = Flask(__name__)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',}
@@ -12,6 +13,10 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 def mainpage():
     return redirect('https://teamyokai.tech')
 
+@app.route('/devian')
+def devian_nolimit(query):
+    return {'images':devian(query)}
+   
 @app.route('/alpha/<query>')
 def alphacoders(query):
     x = requests.get(f"https://wall.alphacoders.com/api2.0/get.php?auth=6950f559377140a4e1594c564cdca6a3&method=search&term={query}", headers=headers).json().get('wallpapers')
