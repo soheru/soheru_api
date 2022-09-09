@@ -17,8 +17,13 @@ def alphacoders(query):
     y = random.choice(x)
     
     short_id = generate_short_id(8)
-    thumb = ShortUrls(original_url=y.get('url_thumb'), short_id=short_id, created_at=datetime.now())
-    urlimage = ShortUrls(original_url=y.get('url_image'), short_id=short_id, created_at=datetime.now())
+    short_id_two = generate_short_id(8)
+    thumb = ShortUrls(
+        original_url=y.get('url_thumb'), short_id=short_id, created_at=datetime.now()
+    )
+    urlimage = ShortUrls(
+        original_url=y.get('url_image'), short_id=short_id_two, created_at=datetime.now()
+    )
     db.session.add(thumb)
     db.session.add(urlimage)
     db.session.commit()
