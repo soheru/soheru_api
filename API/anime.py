@@ -1,3 +1,5 @@
+from API import app 
+from flask import jsonify 
 import requests 
 
 ANIME_QUERY = """
@@ -123,3 +125,11 @@ def manga_info(query):
         return {'success':False}
     else:
         return json.get('data').get('Page')
+    
+@app.route('/anime/<query>')
+def anime_api(query):
+    return jsonify(anime_info(query))
+
+@app.route('/manga/<query>')
+def manga_api(query):
+    return jsonify(manga_info(query))

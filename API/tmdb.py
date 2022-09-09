@@ -1,4 +1,7 @@
 import requests as r
+from API import app
+from flask import jsonify
+
 base_url = "https://api.themoviedb.org/3"
 pic_url = "https://image.tmdb.org/t/p/original"
 TMDBAPI = "2df5093b15a5c8d2ea2a34725ed3de49"
@@ -69,4 +72,32 @@ def moviedata(query):
         'imdbid' : data.get("imdb_id"),
     }, data
     
-    
+@app.route('/tmdb/tv/v1/<query>')
+def tmdb_v1(query):
+    x = get_shows(query)[0]
+    return jsonify(get_beauitfy_details(x))
+
+@app.route('/tmdb/tv/<query>')
+def tmdb_whole_raw(query):
+    x = get_shows(query)
+    return jsonify(x[1])
+
+@app.route('/tmdb/tv/raw/<query>')
+def tmdb_raw(query):
+    x = get_shows(query)
+    return jsonify(get_raw_tmdb(x[0]))    
+
+@app.route('/tmdb/movie/v1/<query>')
+def tmdbmovie_v1(query):
+    x = get_movie(query)[0]
+    return jsonify(moviedata(x)[0])
+
+@app.route('/tmdb/movie/<query>')
+def tmdbmovie_whole_raw(query):
+    x = get_movie(query)
+    return jsonify(x[1])
+
+@app.route('/tmdb/movie/raw/<query>')
+def tmdbmovie_raw(query):
+    x = get_movie(query)
+    return jsonify(moviedata(x[0])[1])        
