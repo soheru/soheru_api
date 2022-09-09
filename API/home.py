@@ -27,4 +27,4 @@ def alphacoders(query):
     db.session.add(thumb)
     db.session.add(urlimage)
     db.session.commit()
-    return jsonify({'url_image':request.host_url + "short/" + short_id, 'thumb_url':request.host_url + "short/" + short_id_two})
+    return jsonify({'url_image':request.host_url + "short/" + short_id_two, 'thumb_url':request.host_url + "short/" + short_id})
