@@ -2,8 +2,8 @@ import random
 import os
 import requests 
 from flask import Flask, render_template
-from tmdb import get_shows, get_beauitfy_details, get_raw_tmdb
-from anilist import anime_info, manga_info
+from .tmdb import get_shows, get_beauitfy_details, get_raw_tmdb
+from .anilist import anime_info, manga_info
 app = Flask(__name__)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',}
 
