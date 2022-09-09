@@ -4,6 +4,7 @@ import requests
 from flask import Flask, render_template, jsonify, redirect
 from .tmdb import get_shows, get_beauitfy_details, get_raw_tmdb, get_movie, moviedata
 from .anilist import anime_info, manga_info
+
 app = Flask(__name__)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',}
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
