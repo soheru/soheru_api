@@ -15,7 +15,7 @@ def mainpage():
 
 @app.route('/devian/<query>')
 def devian_nolimit(query):
-    return {'images':devian(query)}
+    return devian(query)
    
 @app.route('/alpha/<query>')
 def alphacoders(query):
