@@ -1,0 +1,6 @@
+flask_migrate
+python-decouple
+flask_sqlalchemy
+flask
+requests
+bs4
