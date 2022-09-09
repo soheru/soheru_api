@@ -1,7 +1,7 @@
 import random 
 import os
 import requests 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from .tmdb import get_shows, get_beauitfy_details, get_raw_tmdb
 from .anilist import anime_info, manga_info
 app = Flask(__name__)
