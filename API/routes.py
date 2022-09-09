@@ -9,23 +9,7 @@ from flask import render_template, request, flash, redirect, url_for
 def generate_short_id(num_of_chars: int):
     """Function to generate short_id of specified number of characters"""
     return ''.join(choice(string.ascii_letters+string.digits) for _ in range(num_of_chars))
-
-
-@app.route('/apishort', methods=['POST'])
-def api_short():
-    if request.method == 'POST':
-        print(request)
-        return request
-        # short_id = generate_short_id(8)
-        
-        # new_link = ShortUrls(
-        #     original_url=url, short_id=short_id, created_at=datetime.now())
-        # db.session.add(new_link)
-        # db.session.commit()
-        # short_url = request.host_url + "short/" + short_id
-        # return short_url    
-            
-            
+     
 
 @app.route('/short', methods=['GET', 'POST'])
 def index():
