@@ -13,7 +13,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 def mainpage():
     return redirect('https://teamyokai.tech')
 
-@app.route('/devian')
+@app.route('/devian/<query>')
 def devian_nolimit(query):
     return {'images':devian(query)}
    
