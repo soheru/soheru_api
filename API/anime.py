@@ -22,6 +22,9 @@ query ($id: Int, $idMal:Int, $search: String) {
       id
       site
     }
+    coverImage {
+      extraLarge
+    }
     genres
     tags {
       name
