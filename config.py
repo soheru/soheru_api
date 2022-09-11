@@ -1,6 +1,6 @@
 from decouple import config
 
-DATABASE_URI = 'postgres://xmfzqksv:DwEFghfDu6PSqI0umNTQImL_PcIsNsdv@jelani.db.elephantsql.com/xmfzqksv'
+DATABASE_URI = 'postgresql://xmfzqksv:DwEFghfDu6PSqI0umNTQImL_PcIsNsdv@jelani.db.elephantsql.com/xmfzqksv'
 if DATABASE_URI.startswith("postgres://"):
     DATABASE_URI = DATABASE_URI.replace("postgres://", "postgresql://", 1)
 
