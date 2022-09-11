@@ -20,3 +20,4 @@ from API import devian
 from API import tmdb 
 from API import routes
 from API import models
+from API import hastebin
