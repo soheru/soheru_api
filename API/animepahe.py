@@ -27,7 +27,7 @@ def dict_executor(x):
 @app.route('/animepahe/download/<query>')
 def animepahe_direct(query):
     pahe_ep_url = f"https://animepahe.com/api?m=links&id={query}&p=kwik"
-    data = requests.get(pahe_ep_url, headers=headers).json().get('data') 
+    data = requests.get(pahe_ep_url).json().get('data') 
     list_to_process = []
     list_to_process.clear()
     check_eng_or_not = None
@@ -55,7 +55,7 @@ def animepahe_direct(query):
                 
 @app.route('/animepahe/search/<query>')
 def animepahe_search(query):
-    x = requests.get(f'https://animepahe.com/api?m=search&q={query}', headers=headers).json().get('data')
+    x = requests.get(f'https://animepahe.com/api?m=search&q={query}').json().get('data')
     results = []
     for x in x: 
         id = x.get('session')
