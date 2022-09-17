@@ -12,6 +12,7 @@ query ($id: Int, $idMal:Int, $search: String) {
       english
       native
     }
+    description (asHtml: false)
     format
     status
     episodes
