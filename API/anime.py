@@ -27,6 +27,7 @@ query ($id: Int, $idMal:Int, $search: String) {
       extraLarge
     }
     genres
+    bannerImage
     tags {
       name
     }
