@@ -69,9 +69,6 @@ def get_animepahe_airing():
     return {'data':ls}    
         
     
-    
-    
-                    
 @app.route('/animepahe/search/<query>')
 def animepahe_search(query):
     x = requests.get(f'https://animepahe.com/api?m=search&q={query}').json().get('data')

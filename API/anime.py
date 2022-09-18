@@ -7,6 +7,11 @@ query ($id: Int, $idMal:Int, $search: String) {
   Media (id: $id, idMal: $idMal, search: $search, type: ANIME) {
     id
     idMal
+    endDate {
+        day
+        month
+        year
+    }    
     title {
       romaji
       english
@@ -94,8 +99,21 @@ def animestatus(query):
     if 'errors' in json.keys():
         return None
     if json:
-        json = json['data']['Media']['status']
-    return json
+        from datetime import date
+        print(date.today())
+        status = json['data']['Media']['status']    
+        if status == 'FINISHED':
+            endDate = json['data']['Media']['endDate'] 
+            day = endDate.get('day')
+            if len(str(day)) == 1:
+                day = f"0{day}"
+            month = endDate.get('month')
+            if len(str(month)) == 1:
+                month = f"0{month}"
+            year = endDate.get('year')   
+            if str(date.today()) == f"{year}-{month}-{day}":
+              return "RELEASING"  
+    return status
       
 MANGA_QUERY = """
 query ($search: String, $page: Int) {
