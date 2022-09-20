@@ -58,7 +58,6 @@ def animepahe_direct(query):
 def get_animepahe_airing():
     ls = []
     x = requests.get('https://animepahe.com/api?m=airing').json().get('data')
-    list = []
     for x in x:
         anime_title = x.get('anime_title')
         episode = x.get('episode')
@@ -66,7 +65,7 @@ def get_animepahe_airing():
         episode_session = x.get('session')
         anime_status = animestatus(anime_title)
         if anime_status is not None and anime_status.lower() == 'releasing':
-            list.append({'anime_title':anime_title, 'episode':episode, 'disc':disc, 'session':episode_session, 'anime_status':anime_status})
+            ls.append({'anime_title':anime_title, 'episode':episode, 'disc':disc, 'session':episode_session, 'anime_status':anime_status})
     return {'data':ls}    
         
     
