@@ -83,6 +83,20 @@ def anime_info(query):
     else:
         return json
  
+def animestatus(query):
+    search = query
+    variables = {'search': search, 'type': "ANIME"}
+    json = requests.post(
+        url, json={
+            'query': ANIME_QUERY,
+            'variables': variables
+        }).json()
+    if 'errors' in json.keys():
+        return None
+    if json:
+        json = json['data']['Media']['status']
+    return json
+      
 MANGA_QUERY = """
 query ($search: String, $page: Int) {
   Page (perPage: 1, page: $page) {

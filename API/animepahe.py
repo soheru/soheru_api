@@ -1,6 +1,8 @@
 from API import app
 import requests
-from flask import request 
+from flask import request
+
+from API.anime import animestatus 
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',}
 
@@ -52,7 +54,25 @@ def animepahe_direct(query):
                 list_to_process.append({'url':link, "quality":resolution, 'audio':'japanese'})   
     return {'sources':list_to_process}     
             
-                
+@app.route('/animepahe/airing')
+def get_animepahe_airing():
+    ls = []
+    x = requests.get('https://animepahe.com/api?m=airing').json().get('data')
+    list = []
+    for x in x:
+        anime_title = x.get('anime_title')
+        episode = x.get('episode')
+        disc = x.get('disc')
+        episode_session = x.get('session')
+        anime_status = animestatus(anime_title)
+        if anime_status is not None and anime_status.lower() == 'releasing':
+            list.append({'anime_title':anime_title, 'episode':episode, 'disc':disc, 'session':episode_session, 'anime_status':anime_status})
+    return {'data':ls}    
+        
+    
+    
+    
+                    
 @app.route('/animepahe/search/<query>')
 def animepahe_search(query):
     x = requests.get(f'https://animepahe.com/api?m=search&q={query}').json().get('data')
