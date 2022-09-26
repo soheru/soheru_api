@@ -12,6 +12,11 @@ query ($id: Int, $idMal:Int, $search: String) {
         month
         year
     }    
+    startDate {
+        day
+        month
+        year
+    }    
     title {
       romaji
       english
