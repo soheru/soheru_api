@@ -22,3 +22,4 @@ from API import routes
 from API import models
 from API import hastebin
 from API import animepahe
+from API import truecaller

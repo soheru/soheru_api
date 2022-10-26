@@ -4,3 +4,4 @@ flask_sqlalchemy
 flask
 requests
 bs4
+psycopg2
